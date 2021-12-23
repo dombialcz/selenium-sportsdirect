@@ -1,6 +1,7 @@
 package controls;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class TextBox extends UIElement {
@@ -13,4 +14,5 @@ public class TextBox extends UIElement {
             element().sendKeys(text);
     }
 
+    public void fillAndConfirm(String text) { element().sendKeys(text); element().sendKeys(Keys.RETURN); }
 }
