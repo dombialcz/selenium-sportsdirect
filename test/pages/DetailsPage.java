@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class DetailsPage extends Page {
 
-    private String URL = "https://www.sportsdirect.com/searchresults?descriptionfilter=super%20shoes";
+    private String URL = "https://www.sportsdirect.com/adidas-response-super-20-shoes-mens-212328#colcode=21232818";
 
     private Button sizeButton() {
         return new Button(driver, new By.ByCssSelector("#liItem"));
