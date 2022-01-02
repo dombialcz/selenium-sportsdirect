@@ -3,6 +3,7 @@ package controls;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -34,4 +35,25 @@ public class UIElement {
         String actualCSSClasses = element().getAttribute("class");
         assertThat(actualCSSClasses,containsString(cssClass));
     }
+
+    public void hover() {
+        Actions builder = new Actions(driver);
+        builder.moveToElement(element()).build().perform();
+    }
+
+    public boolean isDisplayed() {
+        return element().isDisplayed();
+    }
+
+    public String getText() {
+        return element().getText();
+    }
+
+    // alternate hover:
+    // String javaScript = "var evObj = document.createEvent('MouseEvents');" +
+    //                    "evObj.initMouseEvent(\"mouseover\",true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);" +
+    //                    "arguments[0].dispatchEvent(evObj);";
+    //
+    //
+    //((JavascriptExecutor)driver).executeScript(javaScript, webElement);
 }

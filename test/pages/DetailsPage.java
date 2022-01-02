@@ -1,8 +1,13 @@
 package pages;
 
 import controls.Button;
+import controls.UIElement;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class DetailsPage extends Page {
 
@@ -17,9 +22,16 @@ public class DetailsPage extends Page {
     private Button myBagButton() {
         return new Button(driver, new By.ByCssSelector("#bagQuantity"));
     }
+    private UIElement shoppingListWrapper() { return new UIElement(driver, new By.ByClassName("spanCheckout")); }
 
     public DetailsPage(WebDriver driver) {
         super(driver);
+    }
+
+    public DetailsPage open(){
+        driver.get(this.URL);
+        dismissLanguageModal();
+        return this;
     }
 
     public DetailsPage selectFirstSize () {
@@ -34,6 +46,16 @@ public class DetailsPage extends Page {
 
     public void goToCart() {
         myBagButton().click();
+    }
+
+    public DetailsPage openSmallShoppingList() {
+        myBagButton().hover();
+        return this;
+    }
+
+    public DetailsPage assertSmallShoppingListDisplayed() {
+        Assert.assertTrue(shoppingListWrapper().isDisplayed());
+        return this;
     }
 
 }

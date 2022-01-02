@@ -11,10 +11,6 @@ public class MainPage extends Page {
 
     private String URL = "https://lv.sportsdirect.com/";
 
-    private Button dismissModal() {
-        return new Button(driver, new By.ByCssSelector("button[data-dismiss='modal']"));
-    }
-
     private TextBox searchField() {
         return new TextBox(driver, new By.ByCssSelector("#txtSearch"));
     }
@@ -30,19 +26,10 @@ public class MainPage extends Page {
 
     public MainPage open() {
         driver.get(URL);
+        dismissLanguageModal();
         return this;
     }
 
-    public MainPage dismissLanguageModal() throws InterruptedException {
-//        WebDriverWait wait = new WebDriverWait(driver,3000);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(new By.ByCssSelector("button[data-dismiss='modal']"
-//        )));
-
-        if ( !driver.findElements(new By.ByCssSelector("button[data-dismiss='modal']")).isEmpty() ){
-            dismissModal().click();
-        }
-        return this;
-    }
 
     public MainPage searchFor(String searchQuery){
         searchField().fillAndConfirm(searchQuery);

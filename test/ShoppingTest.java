@@ -26,7 +26,6 @@ public class ShoppingTest {
     @Test
     public void shouldSearchForSuperShoesAndAddToCart() throws InterruptedException {
         new MainPage(driver).open()
-                .dismissLanguageModal()
                 .searchFor("Super Shoes")
                 .clickOnText("Response Super Mens Training Shoes");
 
