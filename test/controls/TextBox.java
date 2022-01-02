@@ -14,5 +14,8 @@ public class TextBox extends UIElement {
             element().sendKeys(text);
     }
 
+    public void confirm() {element().sendKeys(Keys.RETURN);}
+    public void pressDown() {element().sendKeys(Keys.DOWN);}
+
     public void fillAndConfirm(String text) { element().sendKeys(text); element().sendKeys(Keys.RETURN); }
 }

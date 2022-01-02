@@ -3,6 +3,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.MainPage;
 
 public class SearchBarTest {
     private static ChromeDriver driver;
@@ -21,36 +22,36 @@ public class SearchBarTest {
 
     @Test
     public void shouldSearchForShoes() {
-    // click on searchbar
-    // type in shoes
-    // press enter
-    // expect page to load with:
-        // // We found 4455 products in category shoes
+        new MainPage(driver)
+                .open()
+                .searchFor("shoes")
+                .assertCategorySearched("shoes"); // "We found 4455 products in category shoes"
     }
 
     @Test
     public void shouldLandOnErrorPage() {
-        // click on searchbar
-        // type in asdfghjkl
-        // press enter
-        // expect page to load with:
-        // // Unfortunately there were no results for your search, but don't give up! Please check the spelling, or try using less words.
+        new MainPage(driver)
+                .open()
+                .searchFor("asdfghjkl")
+                .assertSearchHeaderTitleContains("Ooops.....");
     }
 
     @Test
     public void shouldAutoCompleteShoesWithNike() {
-        // click on searchbar
-        // type in shoes
-        // attempt to click on Nike Shoes text
-        // expect search bar filled with Nike Shoes
+        new MainPage(driver)
+                .open()
+                .useAutocompleteFromText("Nike S")
+                .searchConfirm()
+                .assertCategorySearched("Nike Shoes");
     }
 
     @Test
     public void shouldStartAutocompleteAt2Characters() {
-        // click on searchbar
-        // type in sho
-        // expect
-        // // ul class=ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all
-        // // to be visible
+        new MainPage(driver)
+                .open()
+                .useAutocompleteFromText("s")
+                .assertAutocompleteNotDisplayed()
+                .useAutocompleteFromText("h")
+                .assertAutocompleteIsDisplayed();
     }
 }

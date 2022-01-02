@@ -5,7 +5,6 @@ import controls.TextBox;
 import controls.UIElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import models.UserLoginDetails;
 
 public abstract class Page {
 

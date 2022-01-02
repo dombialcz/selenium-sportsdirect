@@ -30,8 +30,6 @@ public class MyBagPage extends Page{
         return new Button(driver, new By.ById("lbtnUpdateQtyAndVariants"));
     }
 
-
-
     public MyBagPage(WebDriver driver) {
         super(driver);
     }

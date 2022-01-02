@@ -39,13 +39,4 @@ public class ShoppingTest {
                 .assertItemInBagText("adidas Response Super Mens Training Shoes");
     }
 
-    @Test
-    public void shouldGoToCartFromProductDetailsPageAfterAddingProduct() {
-        // open details page
-        // add to bag
-        // should display context cart menu
-        // click on View Bag
-        // should display myBar page
-    }
-
 }
